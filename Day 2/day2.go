@@ -14,6 +14,7 @@ import (
 type Position struct {
 	Horizontal int
 	Depth      int
+	Aim        int
 	Command    string
 	Commands   []string
 	Movement   int
@@ -23,7 +24,7 @@ type Position struct {
 func main() {
 	p := Position{}
 	p.open()
-	p.calculate()
+	p.calculateAnswer2()
 
 }
 
@@ -61,7 +62,7 @@ func (p *Position) open() {
 
 // calculate() will calculate the submarine's position by iterating through
 // both slices in the Position struct
-func (p *Position) calculate() {
+func (p *Position) calculateAnswer1() {
 	for i, command := range p.Commands {
 		if command == "forward" {
 			p.Horizontal += p.Movements[i]
@@ -71,5 +72,23 @@ func (p *Position) calculate() {
 			p.Depth -= p.Movements[i]
 		}
 	}
+
+	// Answer is the product of p.Horizontal and p.Depth values
+	fmt.Println(p.Horizontal * p.Depth)
+}
+
+func (p *Position) calculateAnswer2() {
+	for i, command := range p.Commands {
+		if command == "forward" {
+			p.Horizontal += p.Movements[i]
+			p.Depth += (p.Aim * p.Movements[i])
+		} else if command == "down" {
+			p.Aim += p.Movements[i]
+		} else {
+			p.Aim -= p.Movements[i]
+		}
+	}
+
+	// Answer is the product of p.Horizontal and p.Depth values
 	fmt.Println(p.Horizontal * p.Depth)
 }
