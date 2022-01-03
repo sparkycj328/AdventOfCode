@@ -36,7 +36,7 @@ func (p *Position) open() {
 	if err != nil {
 		log.Println(err)
 	}
-
+	defer f.Close()
 	// Splits on newlines
 	scanner := bufio.NewScanner(f)
 
