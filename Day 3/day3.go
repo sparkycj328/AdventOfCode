@@ -152,7 +152,6 @@ func getBitOccurences(binaryStrings []string) []int {
 	// initialize array of 0's, with len = the first line
 	bitOccurences := make([]int, size)
 
-	// O(n * m)
 	for _, entry := range binaryStrings {
 		for i, bit := range entry {
 			switch bit {
