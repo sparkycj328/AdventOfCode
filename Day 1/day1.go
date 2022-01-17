@@ -22,7 +22,7 @@ func open(s []int) []int {
 	if err != nil {
 		log.Println(err)
 	}
-
+	defer f.Close()
 	// Splits on newlines
 	scanner := bufio.NewScanner(f)
 
