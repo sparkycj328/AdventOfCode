@@ -41,7 +41,7 @@ func iterate(s []int) int {
 
 	// Keep track how many times the next number is bigger than the previous
 	increased := 0
-	for i, _ := range s {
+	for i := range s {
 		if i <= 1996 {
 			if s[i+1] > s[i] {
 				increased += 1
